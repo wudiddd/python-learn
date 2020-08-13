@@ -1,0 +1,14 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jul 29 23:32:32 CST 2020","Wed Jul 29 23:32:32 CST 2020","587","TestCase","test_login","TestLogin","","","test_login_error[logins_data1]",""
+"passed","Wed Jul 29 23:32:22 CST 2020","Wed Jul 29 23:32:22 CST 2020","926","TestCase","test_login","TestLogin","","","test_login_success[logins_data0]",""
+"passed","Wed Jul 29 23:32:47 CST 2020","Wed Jul 29 23:32:49 CST 2020","1455","TestCase.sys_manage","test_menu_manage","TestMenuManage","","","test_add_menu[测试-/test-3]","
+        :param AccessBrowser: fixture返回的值，就是driver
+        :param name:
+        :param url:
+        :param sort:
+        :return:
+        "
+"passed","Wed Jul 29 23:32:36 CST 2020","Wed Jul 29 23:32:37 CST 2020","565","TestCase","test_login","TestLogin","","","test_login_error[logins_data2]",""
+"passed","Wed Jul 29 23:32:27 CST 2020","Wed Jul 29 23:32:27 CST 2020","564","TestCase","test_login","TestLogin","","","test_login_error[logins_data0]",""
+"failed","Wed Jul 29 23:32:49 CST 2020","Wed Jul 29 23:32:50 CST 2020","1031","TestCase.sys_manage","test_menu_manage","TestMenuManage","","","test_dele_menu",""
+"passed","Wed Jul 29 23:32:41 CST 2020","Wed Jul 29 23:32:42 CST 2020","649","TestCase","test_login","TestLogin","","","test_login_error[logins_data3]",""

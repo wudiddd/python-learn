@@ -1,0 +1,54 @@
+INFO     my_logger:my_log.py:34 ###########################
+INFO     my_logger:my_log.py:34 启动浏览器
+INFO     my_logger:my_log.py:34 driver.get(http://localhost:8080)
+INFO     my_logger:my_log.py:34 <class 'str'>
+INFO     my_logger:my_log.py:34 清空('name', 'userName')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')成功
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')成功
+INFO     my_logger:my_log.py:34 清空('name', 'password')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')成功
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')成功
+INFO     my_logger:my_log.py:34 清空('name', 'code')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')成功
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//form/div/button')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//form/div/button')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//form/div/button')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 准备进入iframe：('xpath', '//iframe[contains(@src,"/menu")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//iframe[contains(@src,"/menu")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//iframe[contains(@src,"/menu")]')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//a[@href="menuedit"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//a[@href="menuedit"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//a[@href="menuedit"]')成功
+INFO     my_logger:my_log.py:34 清空('xpath', '//input[@name="menuName"]')的值
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuName"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuName"]')成功
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuName"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuName"]')成功
+INFO     my_logger:my_log.py:34 清空('xpath', '//input[@name="menuUrl"]')的值
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuUrl"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuUrl"]')成功
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuUrl"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="menuUrl"]')成功
+INFO     my_logger:my_log.py:34 清空('xpath', '//input[@name="sortId"]')的值
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="sortId"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="sortId"]')成功
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="sortId"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@name="sortId"]')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//input[@id="save"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@id="save"]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//input[@id="save"]')成功
+INFO     my_logger:my_log.py:34 执行sql语句：select menu_url from menu where menu_name = '测试'
+INFO     my_logger:my_log.py:34 执行完成sql语句，返回为：('/test',)

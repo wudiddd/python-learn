@@ -1,0 +1,29 @@
+INFO     my_logger:my_log.py:34 ###########################
+INFO     my_logger:my_log.py:34 启动浏览器
+INFO     my_logger:my_log.py:34 driver.get(http://47.98.241.184:8080/oa)
+INFO     my_logger:my_log.py:34 <class 'str'>
+INFO     my_logger:my_log.py:34 清空('name', 'userName')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')成功
+INFO     my_logger:my_log.py:34 从数据库读的值为空
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')
+INFO     my_logger:my_log.py:34 查找元素('name', 'userName')成功
+INFO     my_logger:my_log.py:34 清空('name', 'password')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')成功
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')
+INFO     my_logger:my_log.py:34 查找元素('name', 'password')成功
+INFO     my_logger:my_log.py:34 清空('name', 'code')的值
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')成功
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')
+INFO     my_logger:my_log.py:34 查找元素('name', 'code')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//form/div/button')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//form/div/button')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//form/div/button')成功
+INFO     my_logger:my_log.py:34 获取元素('xpath', "//div[@role='alert']/span")的值
+INFO     my_logger:my_log.py:34 查找元素('xpath', "//div[@role='alert']/span")
+INFO     my_logger:my_log.py:34 查找元素('xpath', "//div[@role='alert']/span")成功
+INFO     my_logger:my_log.py:34 值为登录账号不能为空!
+INFO     my_logger:my_log.py:34 关闭浏览器
+INFO     my_logger:my_log.py:34 ############################

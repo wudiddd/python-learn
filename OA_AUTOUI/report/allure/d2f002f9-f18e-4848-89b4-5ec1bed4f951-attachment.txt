@@ -1,0 +1,19 @@
+INFO     my_logger:my_log.py:34 #########刷新##########
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 准备进入iframe：('xpath', '//iframe[contains(@src,"/menu")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//iframe[contains(@src,"/menu")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//iframe[contains(@src,"/menu")]')成功
+INFO     my_logger:my_log.py:34 按钮位置:('xpath', '//td[@class="menuid"][text()="48"]/../td/a[contains(@href,"delete")]')
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//td[@class="menuid"][text()="48"]/../td/a[contains(@href,"delete")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//td[@class="menuid"][text()="48"]/../td/a[contains(@href,"delete")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//td[@class="menuid"][text()="48"]/../td/a[contains(@href,"delete")]')成功
+INFO     my_logger:my_log.py:34 进入确认alert
+INFO     my_logger:my_log.py:34 执行sql语句：select parent_id from menu where menu_name = '测试'
+INFO     my_logger:my_log.py:34 执行完成sql语句，返回为：(0,)
+INFO     my_logger:my_log.py:34 关闭浏览器
+INFO     my_logger:my_log.py:34 ############################

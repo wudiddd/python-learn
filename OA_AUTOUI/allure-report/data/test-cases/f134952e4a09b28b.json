@@ -1,0 +1,138 @@
+{
+  "uid" : "f134952e4a09b28b",
+  "name" : "test_login_error[logins_data3]",
+  "fullName" : "TestCase.test_login.TestLogin#test_login_error",
+  "historyId" : "397928278f182cca9f41beffbf4abdaa",
+  "time" : {
+    "start" : 1596036761784,
+    "stop" : 1596036762433,
+    "duration" : 649
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "logins_data",
+    "time" : {
+      "start" : 1596036761783,
+      "stop" : 1596036761783,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "in_web",
+    "time" : {
+      "start" : 1596036759718,
+      "stop" : 1596036761783,
+      "duration" : 2065
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1596036739858,
+      "stop" : 1596036739925,
+      "duration" : 67
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "fdd529c9f1df2d1",
+      "name" : "log",
+      "source" : "fdd529c9f1df2d1.txt",
+      "type" : "text/plain",
+      "size" : 1872
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "in_web::0",
+    "time" : {
+      "start" : 1596036762434,
+      "stop" : 1596036764560,
+      "duration" : 2126
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "@pytest.mark.usefixtures('in_web', 'logins_data')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "TestCase"
+  }, {
+    "name" : "suite",
+    "value" : "test_login"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestLogin"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-F7KFRCJP"
+  }, {
+    "name" : "thread",
+    "value" : "20784-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "TestCase.test_login"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "logins_data",
+    "value" : "{'username': 'yang', 'password': 123456, 'code': 1234, 'des': '验证码错误', 'expect': '验证码输入错误!', 'result': 300}"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "@pytest.mark.usefixtures('in_web', 'logins_data')" ]
+  },
+  "source" : "f134952e4a09b28b.json",
+  "parameterValues" : [ "{'username': 'yang', 'password': 123456, 'code': 1234, 'des': '验证码错误', 'expect': '验证码输入错误!', 'result': 300}" ]
+}

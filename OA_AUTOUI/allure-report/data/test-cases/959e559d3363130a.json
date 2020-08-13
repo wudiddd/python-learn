@@ -1,0 +1,128 @@
+{
+  "uid" : "959e559d3363130a",
+  "name" : "test_dele_menu",
+  "fullName" : "TestCase.sys_manage.test_menu_manage.TestMenuManage#test_dele_menu",
+  "historyId" : "11ca944329f480aac5a455f2b14201bb",
+  "time" : {
+    "start" : 1596036769071,
+    "stop" : 1596036770102,
+    "duration" : 1031
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 0 == 999\n  +0\n  -999",
+  "statusTrace" : "self = <test_menu_manage.TestMenuManage object at 0x00000225810D1CC8>\nlogin = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"f4291628b3503877174827957c03e95d\")>\n\n    def test_dele_menu(self,login):\n        # LoginPage(AccessBrowser).login(\"yang\", \"123456\", \"abcd\")\n        #删除菜单并没有真正的删除，知识将parentid改为999\n        MenuManagement(login).delete_menu()\n        menu_name = ReadConfig().read_config_as_section(test_config_path, \"menu\")['menu_name']\n        sql = f\"select parent_id from menu where menu_name = '{menu_name}'\"\n        parent_id = DB().do_sql(sql, 1)\n        #不知道为什么返回不是999，而是原来的值，再执行一次才会改变\n>       assert parent_id[0] == 999\nE       assert 0 == 999\nE         +0\nE         -999\n\nTestCase\\sys_manage\\test_menu_manage.py:42: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "login",
+    "time" : {
+      "start" : 1596036764563,
+      "stop" : 1596036767610,
+      "duration" : 3047
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1596036739858,
+      "stop" : 1596036739925,
+      "duration" : 67
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert 0 == 999\n  +0\n  -999",
+    "statusTrace" : "self = <test_menu_manage.TestMenuManage object at 0x00000225810D1CC8>\nlogin = <selenium.webdriver.chrome.webdriver.WebDriver (session=\"f4291628b3503877174827957c03e95d\")>\n\n    def test_dele_menu(self,login):\n        # LoginPage(AccessBrowser).login(\"yang\", \"123456\", \"abcd\")\n        #删除菜单并没有真正的删除，知识将parentid改为999\n        MenuManagement(login).delete_menu()\n        menu_name = ReadConfig().read_config_as_section(test_config_path, \"menu\")['menu_name']\n        sql = f\"select parent_id from menu where menu_name = '{menu_name}'\"\n        parent_id = DB().do_sql(sql, 1)\n        #不知道为什么返回不是999，而是原来的值，再执行一次才会改变\n>       assert parent_id[0] == 999\nE       assert 0 == 999\nE         +0\nE         -999\n\nTestCase\\sys_manage\\test_menu_manage.py:42: AssertionError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "95bba0df93911a19",
+      "name" : "log",
+      "source" : "95bba0df93911a19.txt",
+      "type" : "text/plain",
+      "size" : 1783
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "login::0",
+    "time" : {
+      "start" : 1596036770204,
+      "stop" : 1596036772338,
+      "duration" : 2134
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "@pytest.mark.usefixtures('login')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "TestCase.sys_manage"
+  }, {
+    "name" : "suite",
+    "value" : "test_menu_manage"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMenuManage"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-F7KFRCJP"
+  }, {
+    "name" : "thread",
+    "value" : "20784-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "TestCase.sys_manage.test_menu_manage"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "@pytest.mark.usefixtures('login')" ]
+  },
+  "source" : "959e559d3363130a.json",
+  "parameterValues" : [ ]
+}

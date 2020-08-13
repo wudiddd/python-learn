@@ -1,0 +1,199 @@
+2020-07-31 19:33:53,662-INFO-my_log.py-my_logger-日志信息:执行sql语句：select menu_id from menu where menu_name = '在线用户'
+2020-07-31 19:33:53,879-INFO-my_log.py-my_logger-日志信息:执行完成sql语句，返回为：(20,)
+2020-07-31 19:33:53,949-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:33:53,949-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:33:55,064-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:33:55,065-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:34:07,732-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:34:07,732-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:07,762-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:07,806-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:07,829-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:07,878-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:34:07,878-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:07,898-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:07,931-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:07,946-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:08,046-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:34:08,047-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:08,067-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:08,101-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:08,116-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:08,175-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:34:08,175-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:34:08,193-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:34:11,613-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:34:11,613-INFO-my_log.py-my_logger-日志信息:############################
+2020-07-31 19:34:13,752-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:34:13,753-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:34:14,868-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:34:14,868-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:34:29,234-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:34:29,234-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:29,264-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:29,309-INFO-my_log.py-my_logger-日志信息:从数据库读的值为空
+2020-07-31 19:34:29,309-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:29,333-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:29,368-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:34:29,368-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:29,388-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:29,423-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:29,439-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:29,548-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:34:29,549-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:29,567-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:29,602-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:29,616-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:29,674-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:34:29,674-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:34:29,692-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:34:29,738-INFO-my_log.py-my_logger-日志信息:获取元素('xpath', "//div[@role='alert']/span")的值
+2020-07-31 19:34:29,738-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")
+2020-07-31 19:34:29,757-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")成功
+2020-07-31 19:34:29,774-INFO-my_log.py-my_logger-日志信息:值为登录账号不能为空!
+2020-07-31 19:34:29,777-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:34:29,777-INFO-my_log.py-my_logger-日志信息:############################
+2020-07-31 19:34:31,911-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:34:31,911-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:34:33,025-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:34:33,025-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:34:45,681-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:34:45,682-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:45,711-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:45,756-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:34:45,781-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:34:45,829-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:34:45,830-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:45,851-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:45,886-INFO-my_log.py-my_logger-日志信息:从数据库读的值为空
+2020-07-31 19:34:45,887-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:34:45,903-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:34:45,975-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:34:45,975-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:45,995-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:46,030-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:34:46,045-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:34:46,107-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:34:46,107-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:34:46,128-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:34:46,177-INFO-my_log.py-my_logger-日志信息:获取元素('xpath', "//div[@role='alert']/span")的值
+2020-07-31 19:34:46,178-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")
+2020-07-31 19:34:46,197-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")成功
+2020-07-31 19:34:46,214-INFO-my_log.py-my_logger-日志信息:值为登录密码不能为空!
+2020-07-31 19:34:46,216-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:34:46,216-INFO-my_log.py-my_logger-日志信息:############################
+2020-07-31 19:34:48,348-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:34:48,348-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:34:49,443-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:34:49,444-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:35:02,060-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:35:02,060-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:02,092-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:02,138-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:02,162-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:02,212-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:35:02,213-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:02,233-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:02,267-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:02,281-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:02,380-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:35:02,381-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:02,401-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:02,434-INFO-my_log.py-my_logger-日志信息:从数据库读的值为空
+2020-07-31 19:35:02,435-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:02,449-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:02,504-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:35:02,504-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:35:02,523-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:35:02,575-INFO-my_log.py-my_logger-日志信息:获取元素('xpath', "//div[@role='alert']/span")的值
+2020-07-31 19:35:02,576-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")
+2020-07-31 19:35:02,595-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")成功
+2020-07-31 19:35:02,614-INFO-my_log.py-my_logger-日志信息:值为验证码不能为空!
+2020-07-31 19:35:02,616-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:35:02,617-INFO-my_log.py-my_logger-日志信息:############################
+2020-07-31 19:35:04,750-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:35:04,751-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:35:05,856-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:35:05,856-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:35:18,479-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:35:18,480-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:18,510-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:18,559-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:18,584-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:18,634-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:35:18,635-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:18,655-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:18,689-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:18,704-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:18,806-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:35:18,807-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:18,827-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:18,862-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:18,878-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:18,940-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:35:18,940-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:35:18,960-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:35:19,184-INFO-my_log.py-my_logger-日志信息:获取元素('xpath', "//div[@role='alert']/span")的值
+2020-07-31 19:35:19,185-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")
+2020-07-31 19:35:19,208-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', "//div[@role='alert']/span")成功
+2020-07-31 19:35:19,226-INFO-my_log.py-my_logger-日志信息:值为验证码输入错误!
+2020-07-31 19:35:19,230-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:35:19,230-INFO-my_log.py-my_logger-日志信息:############################
+2020-07-31 19:35:21,367-INFO-my_log.py-my_logger-日志信息:###########################
+2020-07-31 19:35:21,367-INFO-my_log.py-my_logger-日志信息:启动浏览器
+2020-07-31 19:35:22,483-INFO-my_log.py-my_logger-日志信息:driver.get(http://47.98.241.184:8080/oa)
+2020-07-31 19:35:22,483-INFO-my_log.py-my_logger-日志信息:<class 'str'>
+2020-07-31 19:35:34,666-INFO-my_log.py-my_logger-日志信息:清空('name', 'userName')的值
+2020-07-31 19:35:34,668-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:34,699-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:34,748-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')
+2020-07-31 19:35:34,776-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'userName')成功
+2020-07-31 19:35:34,831-INFO-my_log.py-my_logger-日志信息:清空('name', 'password')的值
+2020-07-31 19:35:34,833-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:34,853-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:34,888-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')
+2020-07-31 19:35:34,906-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'password')成功
+2020-07-31 19:35:35,007-INFO-my_log.py-my_logger-日志信息:清空('name', 'code')的值
+2020-07-31 19:35:35,008-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:35,026-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:35,061-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')
+2020-07-31 19:35:35,077-INFO-my_log.py-my_logger-日志信息:查找元素('name', 'code')成功
+2020-07-31 19:35:35,147-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//form/div/button')
+2020-07-31 19:35:35,148-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')
+2020-07-31 19:35:35,169-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//form/div/button')成功
+2020-07-31 19:35:38,277-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//span[text()="系统管理"]//..//../a')
+2020-07-31 19:35:38,278-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="系统管理"]//..//../a')
+2020-07-31 19:35:38,296-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="系统管理"]//..//../a')成功
+2020-07-31 19:35:38,338-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//span[text()="菜单管理"]//..//../a')
+2020-07-31 19:35:38,339-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="菜单管理"]//..//../a')
+2020-07-31 19:35:38,872-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="菜单管理"]//..//../a')成功
+2020-07-31 19:35:39,229-INFO-my_log.py-my_logger-日志信息:准备进入iframe：('xpath', '//iframe[contains(@src,"/menu")]')
+2020-07-31 19:35:39,230-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//iframe[contains(@src,"/menu")]')
+2020-07-31 19:35:49,379-DEBUG-my_log.py-my_logger-日志信息:出现的异常是Message: 
+
+2020-07-31 19:35:49,667-INFO-my_log.py-my_logger-日志信息:截图结果为：True
+2020-07-31 19:35:49,673-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//a[@href="menuedit"]')
+2020-07-31 19:35:49,673-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//a[@href="menuedit"]')
+2020-07-31 19:35:59,815-DEBUG-my_log.py-my_logger-日志信息:出现的异常是Message: 
+
+2020-07-31 19:36:00,104-INFO-my_log.py-my_logger-日志信息:截图结果为：True
+2020-07-31 19:36:00,190-INFO-my_log.py-my_logger-日志信息:#########刷新##########
+2020-07-31 19:36:00,747-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//span[text()="系统管理"]//..//../a')
+2020-07-31 19:36:00,748-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="系统管理"]//..//../a')
+2020-07-31 19:36:00,771-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="系统管理"]//..//../a')成功
+2020-07-31 19:36:00,817-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//span[text()="菜单管理"]//..//../a')
+2020-07-31 19:36:00,818-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="菜单管理"]//..//../a')
+2020-07-31 19:36:01,357-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//span[text()="菜单管理"]//..//../a')成功
+2020-07-31 19:36:01,578-INFO-my_log.py-my_logger-日志信息:准备进入iframe：('xpath', '//iframe[contains(@src,"/menu")]')
+2020-07-31 19:36:01,579-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//iframe[contains(@src,"/menu")]')
+2020-07-31 19:36:11,715-DEBUG-my_log.py-my_logger-日志信息:出现的异常是Message: 
+
+2020-07-31 19:36:12,007-INFO-my_log.py-my_logger-日志信息:截图结果为：True
+2020-07-31 19:36:12,013-INFO-my_log.py-my_logger-日志信息:按钮位置:('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+2020-07-31 19:36:12,013-INFO-my_log.py-my_logger-日志信息:点击元素('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+2020-07-31 19:36:12,013-INFO-my_log.py-my_logger-日志信息:查找元素('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+2020-07-31 19:36:22,156-DEBUG-my_log.py-my_logger-日志信息:出现的异常是Message: 
+
+2020-07-31 19:36:22,444-INFO-my_log.py-my_logger-日志信息:截图结果为：True
+2020-07-31 19:36:22,452-INFO-my_log.py-my_logger-日志信息:关闭浏览器
+2020-07-31 19:36:22,452-INFO-my_log.py-my_logger-日志信息:############################

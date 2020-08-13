@@ -1,0 +1,4 @@
+INFO     my_logger:my_log.py:34 ###########################
+INFO     my_logger:my_log.py:34 启动浏览器
+INFO     my_logger:my_log.py:34 driver.get(http://47.98.241.184:8080/oa)
+INFO     my_logger:my_log.py:34 <class 'str'>

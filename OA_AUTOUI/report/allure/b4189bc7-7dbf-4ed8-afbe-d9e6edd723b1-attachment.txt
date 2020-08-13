@@ -1,0 +1,20 @@
+INFO     my_logger:my_log.py:34 #########刷新##########
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="系统管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//span[text()="菜单管理"]//..//../a')成功
+INFO     my_logger:my_log.py:34 准备进入iframe：('xpath', '//iframe[contains(@src,"/menu")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//iframe[contains(@src,"/menu")]')
+DEBUG    my_logger:my_log.py:32 出现的异常是Message: 
+
+INFO     my_logger:my_log.py:34 截图结果为：True
+INFO     my_logger:my_log.py:34 按钮位置:('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+INFO     my_logger:my_log.py:34 点击元素('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+INFO     my_logger:my_log.py:34 查找元素('xpath', '//td[@class="menuid"][text()="20"]/../td/a[contains(@href,"delete")]')
+DEBUG    my_logger:my_log.py:32 出现的异常是Message: 
+
+INFO     my_logger:my_log.py:34 截图结果为：True
+INFO     my_logger:my_log.py:34 关闭浏览器
+INFO     my_logger:my_log.py:34 ############################

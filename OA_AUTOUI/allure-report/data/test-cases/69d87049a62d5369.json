@@ -1,0 +1,132 @@
+{
+  "uid" : "69d87049a62d5369",
+  "name" : "test_add_menu[测试-/test-3]",
+  "fullName" : "TestCase.sys_manage.test_menu_manage.TestMenuManage#test_add_menu",
+  "historyId" : "24db1564942b51feaaa8241a2aa38d18",
+  "time" : {
+    "start" : 1596036767611,
+    "stop" : 1596036769066,
+    "duration" : 1455
+  },
+  "description" : "\n        :param AccessBrowser: fixture返回的值，就是driver\n        :param name:\n        :param url:\n        :param sort:\n        :return:\n        ",
+  "descriptionHtml" : "<pre><code>    :param AccessBrowser: fixture返回的值，就是driver\n    :param name:\n    :param url:\n    :param sort:\n    :return:\n</code></pre>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "login",
+    "time" : {
+      "start" : 1596036764563,
+      "stop" : 1596036767610,
+      "duration" : 3047
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  }, {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1596036739858,
+      "stop" : 1596036739925,
+      "duration" : 67
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "description" : "\n        :param AccessBrowser: fixture返回的值，就是driver\n        :param name:\n        :param url:\n        :param sort:\n        :return:\n        ",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "7e7d0c0ceb649a63",
+      "name" : "log",
+      "source" : "7e7d0c0ceb649a63.txt",
+      "type" : "text/plain",
+      "size" : 4248
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "hasContent" : true,
+    "stepsCount" : 0
+  },
+  "afterStages" : [ {
+    "name" : "login::0",
+    "time" : {
+      "start" : 1596036770204,
+      "stop" : 1596036772338,
+      "duration" : 2134
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "@pytest.mark.usefixtures('login')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "TestCase.sys_manage"
+  }, {
+    "name" : "suite",
+    "value" : "test_menu_manage"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMenuManage"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-F7KFRCJP"
+  }, {
+    "name" : "thread",
+    "value" : "20784-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "TestCase.sys_manage.test_menu_manage"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "name",
+    "value" : "'测试'"
+  }, {
+    "name" : "sort",
+    "value" : "'3'"
+  }, {
+    "name" : "url",
+    "value" : "'/test'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "@pytest.mark.usefixtures('login')" ]
+  },
+  "source" : "69d87049a62d5369.json",
+  "parameterValues" : [ "'测试'", "'3'", "'/test'" ]
+}
