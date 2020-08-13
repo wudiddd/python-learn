@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var collapsed = get_query_parameter('collapsed') || 'Passed';
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (extras.classList.contains("collapsed")) {
+            expandcollapse.classList.add("expander")
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function get_query_parameter(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    sort_column(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+
+        if (key_a == key_b) return 0;
+
+        if (reversed) {
+            return (key_a < key_b ? 1 : -1);
+        } else {
+            return (key_a > key_b ? 1 : -1);
+        }
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <h1>report.html</h1>
+    <p>Report generated on 07-Aug-2020 at 18:01:37 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.1.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>JAVA_HOME</td>
+        <td>D:\jdk1.8</td></tr>
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "0.13.1", "py": "1.9.0", "pytest": "5.4.3"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.18362-SP0</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"Faker": "4.1.1", "allure-pytest": "2.8.16", "html": "2.1.1", "metadata": "1.10.0", "rerunfailures": "9.0"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.7.6</td></tr></table>
+    <h2>Summary</h2>
+    <p>3 tests ran in 1.89 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_case/test_http_request.py::TestHttpRequest::test_api[login_data0]</td>
+          <td class="col-duration">0.19</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     my_logger:my_log.py:35 响应的html代码是：&lt;!DOCTYPE html&gt;
+&lt;html &gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link href=&quot;images/favicon1.ico&quot; rel=&quot;icon&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;link href=&quot;images/favicon1.ico&quot; rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;title&gt;OA办公自动化系统&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/login.css&quot;&gt;
+    &lt;style&gt;
+
+        .inp {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 278px;
+            height: 40px;
+            font-size: 18px;
+        }
+        /*
+                .btn {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    border: 1px solid #cccccc;
+                    border-radius: 2px;
+                    width: 100px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 16px;
+                    color: #666;
+                    cursor: pointer;
+                    background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+                } */
+
+        .btn:hover {
+            background: #3c83a5;
+            color:#fff;
+        }
+
+        #captcha {
+            width: 300px;
+            display: inline-block;
+        }
+
+        label {
+            vertical-align: top;
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        #wait {
+            text-align: left;
+            color: #666;
+            margin: 0;
+        }
+        .thisimg:HOVER {
+            cursor: pointer;
+        }
+        .test:FOCUS {
+            border-color: #66afe9 !important;
+        }
+        .modal-dialog {
+            width: 500px;
+        }
+
+        .modal-body .icon {
+            height: 80px;
+            width: 80px;
+            margin: 20px auto;
+            border-radius: 50%;
+            color: #aad6aa;
+            border: 3px solid #d9ead9;
+            text-align: center;
+            font-size: 44px;
+        }
+
+        .modal-body .icon .glyphicon {
+            top: 11px;
+        }
+
+        .modal-p {
+            margin: 20px auto;
+        }
+
+        .modal-body .modal-p h2 {
+            text-align: center;
+        }
+
+        .modal-body .modal-p p {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            padding-top: 8px;
+            font-weight: 300;
+        }
+
+        .modal-p .btn {
+            width: 100px;
+            height: 40px;
+        }
+        .modal-error .icon{
+            color: #f27474;
+            border: 3px solid #f27474;
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;cotn_principal&quot;&gt;
+    &lt;div class=&quot;cont_centrar&quot; style=&quot;top:5%;&quot;&gt;
+        &lt;div class=&quot;cont_login&quot;&gt;
+            &lt;div class=&quot;cont_forms cont_forms_active_login&quot; style=&quot;height: 480px;width: 400px;border-radius: 15px;&quot;&gt;
+                &lt;div class=&quot;cont_img_back_&quot;&gt; &lt;img src=&quot;images/background.jpg&quot; alt=&quot;背景图片&quot; /&gt; &lt;/div&gt;
+                &lt;form action=&quot;login&quot; method=&quot;post&quot; onsubmit=&quot;return check();&quot;&gt;
+                    &lt;div class=&quot;cont_form_login&quot; style=&quot;display: block;opacity: 1;width: 400px;&quot;&gt;
+                        &lt;div class=&quot;alert alert-danger alert-dismissible&quot;  role=&quot;alert&quot; style=&quot;position: absolute;padding: 11px;display: none&quot;&gt;
+                            错误信息: &lt;span class=&quot;error-mess&quot;&gt;&lt;/span&gt;
+                            &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot; style=&quot;right:0px;&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;h2&gt;登&amp;nbsp&amp;nbsp&amp;nbsp录&lt;/h2&gt;
+                        &lt;input type=&quot;text&quot; placeholder=&quot;UserName/TeL&quot; autofocus=&quot;autofocus&quot; value=&quot;&quot; name=&quot;userName&quot; class=&quot;userName test&quot;/&gt;
+                        &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; value=&quot;&quot; name=&quot;password&quot; class=&quot;password test&quot;/&gt;
+                        &lt;input type=&quot;text&quot; placeholder=&quot;Code&quot; style=&quot;margin-bottom: 20px;width:152px&quot; name=&quot;code&quot; class=&quot;code test&quot;/&gt;
+                        &lt;div class=&quot;login-img&quot; style=&quot;display:inline-block&quot;&gt;
+                            &lt;img class=&quot;thisimg&quot; onclick=&quot;this.src=&#x27;vec?r&#x27;+Date.now()&quot; src=&quot;vec&quot; alt=&quot;验证码&quot; style=&quot;width: 100px;height: 42px;border-radius: 3px;&quot;&gt;
+                        &lt;/div&gt;
+                        &lt;br&gt;
+                        &lt;button class=&quot;btn_login btn&quot; type=&quot;submit&quot; &gt;LOGIN&lt;/button&gt;
+
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;border: 1px solid transparent;&quot;&gt;
+                &lt;p style=&quot;margin-top: 550px;font-weight: 400;color: #757575;font-size: 22px;letter-spacing:1px ;&quot;&gt;欢迎使用OA办公自动化系统&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;modal fade in&quot; id=&quot;mymodal&quot; data-backdrop=&quot;static&quot; &gt;
+    &lt;div class=&quot;modal-dialog&quot; style=&quot;top: 20%;&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body modal-error&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;
+                    &lt;span class=&quot;glyphicon&quot;&gt;!&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-p&quot;&gt;
+                    &lt;!--&lt;h2 style=&quot;text-align: center;&quot;&gt;提示信息&lt;/h2&gt;--&gt;
+                    &lt;p class=&quot;modal-error-mess&quot;&gt;该用户已经登录了，是否继续 ？&lt;/p&gt;
+                    &lt;div class=&quot;modal-p&quot;&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot; &gt;取消&lt;/button&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary contiue&quot; data-dismiss=&quot;modal&quot;&gt;继续&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- /.modal-content --&gt;
+    &lt;/div&gt;
+    &lt;!-- /.modal-dialog --&gt;
+&lt;/div&gt;
+&lt;!-- /.modal --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;easyui/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(&#x27;.test&#x27;).on(&#x27;click&#x27;,function(){
+        $(this).css(&#x27;border&#x27;,&quot;1px solid transparent&quot;);
+    })
+    $(&#x27;.contiue&#x27;).on(&#x27;click&#x27;,function(){
+        location.href=&quot;/handlehas&quot;;
+    })
+
+
+    function check() {
+        var userName=$(&#x27;.userName&#x27;).val().trim();
+        var password=$(&#x27;.password&#x27;).val().trim();
+        var code=$(&#x27;.code&#x27;).val().trim();
+        var count=1;
+        if(userName==null || userName==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;登录账号不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.userName&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        if(password==null || password==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;登录密码不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.password&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        if(code==null || code==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;验证码不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.code&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        console.log(count);
+        return true;
+    }
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+INFO     my_logger:my_log.py:35 执行用例通过
+INFO     my_logger:my_log.py:35 获取到的结果是：200<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_case/test_http_request.py::TestHttpRequest::test_api[login_data1]</td>
+          <td class="col-duration">0.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     my_logger:my_log.py:35 响应的html代码是：���� JFIF      �� C 		
+ $.&#x27; &quot;,#(7),01444&#x27;9=82&lt;.342�� C			2!!22222222222222222222222222222222222222222222222222��  ( �&quot; ��           	
+�� �   } !1AQa&quot;q2���#B��R��$3br�	
+%&amp;&#x27;()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������        	
+�� �  w !1AQaq&quot;2�B����	#3R�br�
+$4�%�&amp;&#x27;()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������   ? ���-t-b�N�Q�ү�,`��\�n�{F���``Nz
+ϯ�� g�X�|9{ri�ѝAeg�#� ���0FO=0��I]\Eoo�O+��8Գ;� �O�x&amp;�����)!�&#x27;)$r)VFy1^��?������^ �ۥi�4��4E��2^e ��aH)����(��-&#x27;RѮ�T���gd��B�1\����3�j�t4�e�|Qu�^&#x27;���!�9u�5U�$� �c��W?@ji�׵�v���MJ�r�%��ʡ�	PFpAǸ�χ~� ��\�;����1�B������ǜ�c��w�״�&gt;x����} �sc�Eh�����$��w4�����9l��(��44�X����*�� �Ǚ�Kw�fs�����k&gt;�� ��N~̾!�o&gt;xu/��+,�`[eݜc��g����.i�N���5�����N�]����`�$(&#x27; g�Uy����[{���x���ȥYA�x�{��� � ���_=�x�qs&#x27;�#y��ȑq�Ps��
+ �&amp;�����)&amp;�W	q�fv&#x27;  9$�1W5=X�&lt;��m*���ϗ��w�~1�n8���+����}�R��&amp;�%����&#x27;%J��u�&quot;�q�?C�� ��|_���V��O?G����B���L*�_0�H�@��Muq��RM&lt;�8�R��N  rI&lt;b�jZN��\-�������c���b�# 0g�נ|�f���gqF��k�C��X^:�O8������C��T��&quot;�\r wD�	�r=�ӥ qu���� ��}{f�~\wZ{�Ɂ,��F��/�Gp7v�x�v�	u(t�����dd{�n N�Q�S�npO�z��x2�V��xm$�Ͼ��o1&gt;aR~���J��#&lt;�@&#x27;��&gt;4k�:���6�ZD�ӑ��ټ��J�9;����S������?_�&gt;?�9.5��)fU��H����p��ˊ����S�no�$�.��y�}�nv$���d�Ҁ+��|/}��h��L�ҪnE��F� zdd�H�:����	�jֳ��W�OjN%�	�C �m��l���@,|D�&gt;�ig�&lt;&gt;&lt;9g�u2u���g�aq�����+L��#��;+˔�.�R5!�h_���d�rI=Fk3B����o�:f�� 
+�C���q[y���op����9�Eu� ��m��i�����[\_�u���q��$f0Nsӌf�&gt;d����֛��#K�i��m�h��)# ��� �O�:�������&lt;���E�@d�#�ŕ�q&amp;	!�ų�ɯ8� ���g�	����o�H�����4�*Ѵ�X��{#p��ZG*��b%��^�&#x27;@K���B����5e&gt;�����NL�&#x27;�6Ig�c׏f�h���?�C��	x^�籏8�^d��ir096x�1^@��&lt;A��x����Q�g&quot;���5i&amp; �0c$�R8���/�K�?x{^��RO,�2�i�;��UQq�Cd����럠�9�+ꚍ��6����7*�d�ٶ�� #9������������X5kfVb�P.:&quot;����=:�C���%� 	���$�)�{���oi��n&lt;��g�G}q��77��y�WR��&gt;�7;X�p2I�_[�N� �sᯌu?�mKo��r��,Vͷ������|�@X����5k�9&lt;��YRh_h;]H*px8 u�� ��/��Q��x-��ZK� r��#H�q����Nq�����(��(�[�|9�A�i7g��w�.�}�����G&quot;�o[�|G�O�j�h��o�.�M�T(�@��(&gt;�4MoQ�����}���\���R��	�(�[����ڵ��/���K�Sv�
+8P �����f�mg&#x27;�uk*M�k�N�Q@$�N���F;�r��wQ�!W�&lt; $�� uc��=PA����Z߇��GP��/��y1�͈Q~`����5��Z�Eqo,����Hث#�A�9�� �&lt;I��^.ӣ��5_���(�S��G� �r�F?�r�Q@��
+INFO     my_logger:my_log.py:35 执行用例通过
+INFO     my_logger:my_log.py:35 获取到的结果是：200<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_case/test_http_request.py::TestHttpRequest::test_api[login_data2]</td>
+          <td class="col-duration">0.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>INFO     my_logger:my_log.py:35 响应的html代码是：&lt;!DOCTYPE html&gt;
+&lt;html &gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link href=&quot;images/favicon1.ico&quot; rel=&quot;icon&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;link href=&quot;images/favicon1.ico&quot; rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;title&gt;OA办公自动化系统&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/login.css&quot;&gt;
+    &lt;style&gt;
+
+        .inp {
+            border: 1px solid #cccccc;
+            border-radius: 2px;
+            padding: 0 10px;
+            width: 278px;
+            height: 40px;
+            font-size: 18px;
+        }
+        /*
+                .btn {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    border: 1px solid #cccccc;
+                    border-radius: 2px;
+                    width: 100px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 16px;
+                    color: #666;
+                    cursor: pointer;
+                    background: white linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+                } */
+
+        .btn:hover {
+            background: #3c83a5;
+            color:#fff;
+        }
+
+        #captcha {
+            width: 300px;
+            display: inline-block;
+        }
+
+        label {
+            vertical-align: top;
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        #wait {
+            text-align: left;
+            color: #666;
+            margin: 0;
+        }
+        .thisimg:HOVER {
+            cursor: pointer;
+        }
+        .test:FOCUS {
+            border-color: #66afe9 !important;
+        }
+        .modal-dialog {
+            width: 500px;
+        }
+
+        .modal-body .icon {
+            height: 80px;
+            width: 80px;
+            margin: 20px auto;
+            border-radius: 50%;
+            color: #aad6aa;
+            border: 3px solid #d9ead9;
+            text-align: center;
+            font-size: 44px;
+        }
+
+        .modal-body .icon .glyphicon {
+            top: 11px;
+        }
+
+        .modal-p {
+            margin: 20px auto;
+        }
+
+        .modal-body .modal-p h2 {
+            text-align: center;
+        }
+
+        .modal-body .modal-p p {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            padding-top: 8px;
+            font-weight: 300;
+        }
+
+        .modal-p .btn {
+            width: 100px;
+            height: 40px;
+        }
+        .modal-error .icon{
+            color: #f27474;
+            border: 3px solid #f27474;
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;cotn_principal&quot;&gt;
+    &lt;div class=&quot;cont_centrar&quot; style=&quot;top:5%;&quot;&gt;
+        &lt;div class=&quot;cont_login&quot;&gt;
+            &lt;div class=&quot;cont_forms cont_forms_active_login&quot; style=&quot;height: 480px;width: 400px;border-radius: 15px;&quot;&gt;
+                &lt;div class=&quot;cont_img_back_&quot;&gt; &lt;img src=&quot;images/background.jpg&quot; alt=&quot;背景图片&quot; /&gt; &lt;/div&gt;
+                &lt;form action=&quot;login&quot; method=&quot;post&quot; onsubmit=&quot;return check();&quot;&gt;
+                    &lt;div class=&quot;cont_form_login&quot; style=&quot;display: block;opacity: 1;width: 400px;&quot;&gt;
+                        &lt;div class=&quot;alert alert-danger alert-dismissible&quot;  role=&quot;alert&quot; style=&quot;position: absolute;padding: 11px;display: none&quot;&gt;
+                            错误信息: &lt;span class=&quot;error-mess&quot;&gt;账号或密码错误！&lt;/span&gt;
+                            &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot; style=&quot;right:0px;&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;h2&gt;登&amp;nbsp&amp;nbsp&amp;nbsp录&lt;/h2&gt;
+                        &lt;input type=&quot;text&quot; placeholder=&quot;UserName/TeL&quot; autofocus=&quot;autofocus&quot; value=&quot;&quot; name=&quot;userName&quot; class=&quot;userName test&quot;/&gt;
+                        &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; value=&quot;&quot; name=&quot;password&quot; class=&quot;password test&quot;/&gt;
+                        &lt;input type=&quot;text&quot; placeholder=&quot;Code&quot; style=&quot;margin-bottom: 20px;width:152px&quot; name=&quot;code&quot; class=&quot;code test&quot;/&gt;
+                        &lt;div class=&quot;login-img&quot; style=&quot;display:inline-block&quot;&gt;
+                            &lt;img class=&quot;thisimg&quot; onclick=&quot;this.src=&#x27;vec?r&#x27;+Date.now()&quot; src=&quot;vec&quot; alt=&quot;验证码&quot; style=&quot;width: 100px;height: 42px;border-radius: 3px;&quot;&gt;
+                        &lt;/div&gt;
+                        &lt;br&gt;
+                        &lt;button class=&quot;btn_login btn&quot; type=&quot;submit&quot; &gt;LOGIN&lt;/button&gt;
+
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;border: 1px solid transparent;&quot;&gt;
+                &lt;p style=&quot;margin-top: 550px;font-weight: 400;color: #757575;font-size: 22px;letter-spacing:1px ;&quot;&gt;欢迎使用OA办公自动化系统&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;modal fade in&quot; id=&quot;mymodal&quot; data-backdrop=&quot;static&quot; &gt;
+    &lt;div class=&quot;modal-dialog&quot; style=&quot;top: 20%;&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body modal-error&quot;&gt;
+                &lt;div class=&quot;icon&quot;&gt;
+                    &lt;span class=&quot;glyphicon&quot;&gt;!&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-p&quot;&gt;
+                    &lt;!--&lt;h2 style=&quot;text-align: center;&quot;&gt;提示信息&lt;/h2&gt;--&gt;
+                    &lt;p class=&quot;modal-error-mess&quot;&gt;该用户已经登录了，是否继续 ？&lt;/p&gt;
+                    &lt;div class=&quot;modal-p&quot;&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot; &gt;取消&lt;/button&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary contiue&quot; data-dismiss=&quot;modal&quot;&gt;继续&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- /.modal-content --&gt;
+    &lt;/div&gt;
+    &lt;!-- /.modal-dialog --&gt;
+&lt;/div&gt;
+&lt;!-- /.modal --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;easyui/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+        $(function(){
+            console.log(&#x27;账号或密码错误！&#x27;);
+            $(&#x27;.error-mess&#x27;).text(&#x27;账号或密码错误！&#x27;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            
+        })
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(&#x27;.test&#x27;).on(&#x27;click&#x27;,function(){
+        $(this).css(&#x27;border&#x27;,&quot;1px solid transparent&quot;);
+    })
+    $(&#x27;.contiue&#x27;).on(&#x27;click&#x27;,function(){
+        location.href=&quot;/handlehas&quot;;
+    })
+
+
+    function check() {
+        var userName=$(&#x27;.userName&#x27;).val().trim();
+        var password=$(&#x27;.password&#x27;).val().trim();
+        var code=$(&#x27;.code&#x27;).val().trim();
+        var count=1;
+        if(userName==null || userName==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;登录账号不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.userName&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        if(password==null || password==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;登录密码不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.password&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        if(code==null || code==&quot;&quot;){
+            $(&#x27;.error-mess&#x27;).text(&quot;验证码不能为空!&quot;);
+            $(&#x27;.alert-danger&#x27;).css(&#x27;display&#x27;,&#x27;block&#x27;);
+            $(&#x27;.code&#x27;).css(&#x27;border-color&#x27;,&quot;#a94442&quot;);
+            count=0;
+            return false;
+        }
+        console.log(count);
+        return true;
+    }
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+INFO     my_logger:my_log.py:35 执行用例通过
+INFO     my_logger:my_log.py:35 获取到的结果是：200<br/></div></td></tr></tbody></table></body></html>

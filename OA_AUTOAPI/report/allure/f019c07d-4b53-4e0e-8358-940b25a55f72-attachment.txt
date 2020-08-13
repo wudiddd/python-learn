@@ -1,0 +1,2 @@
+INFO     my_logger:my_log.py:35 执行用例通过
+INFO     my_logger:my_log.py:35 获取到的结果是：200

@@ -1,0 +1,4 @@
+DEBUG    my_logger:my_log.py:33 执行用例出错：assert 200 == 500
+  +200
+  -500
+INFO     my_logger:my_log.py:35 获取到的结果是：500
